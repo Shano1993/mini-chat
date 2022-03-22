@@ -1,0 +1,56 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: rgba(0, 0, 0, 0.77);
+}
+
+header {
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 2rem;
+}
+
+h1 {
+    font-size: 4rem;
+    color: orange;
+}
+
+h2 {
+    font-size: 3rem;
+    padding: 2rem;
+    background-color: orange;
+}
+
+.enter {
+    margin: 5rem auto;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type=text], input[type=number] {
+    padding: 0.5rem;
+    margin: 1.5rem;
+    font-size: 1.5rem;
+}
+
+input[type=submit] {
+    padding: 1rem;
+    margin: 2rem;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
