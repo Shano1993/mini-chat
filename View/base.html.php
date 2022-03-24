@@ -1,3 +1,9 @@
+<?php
+
+use App\Controller\AbstractController;
+
+?>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -7,18 +13,35 @@
     <title>Home</title>
     <link rel="stylesheet" href="/assets/css/style.css">
 </head>
-<body>
-    <header>
-        <h1>Mini Chat</h1>
+<body> <?php
 
-        <nav>
-            <a href="/index.php?c=home">Acceuil</a>
-            <a href="/index.php?c=user">S'inscrire</a>
-            <a href="">Se connecter</a>
-        </nav>
+echo "<pre>";
+var_dump([
+    'user in session' => isset($_SESSION['user']),
+    'user_connected' => UsersController::isUserConnected(),
+]);
+echo "</pre>";
+
+?>
+    <header>
+        <h1>Chat en Folie</h1>
     </header>
 
-    <div>
+        <nav>
+            <a href="/index.php?c=home" class="link">Acceuil</a>
+            <?php
+            if (!AbstractController::isUserConnected()) { ?>
+                <a href="/index.php?c=user" class="link">Inscription</a>
+                <a href="/index.php?c=user&a=login" class="link">Connexion</a> <?php
+            }
+            else { ?>
+                <a href="/index.php?c=user&a=profil" class="link">Pseudo : <?= $_SESSION['user']->getUsername() ?></a>
+                <a href="/index.php?c=user&a=logout" class="link">Deconnexion</a> <?php
+            }
+            ?>
+        </nav>
+
+    <div class="container">
         <?= $html ?>
     </div>
 

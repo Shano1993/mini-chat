@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Model\Entity\Users;
+
 abstract class AbstractController
 {
     abstract public function index();
@@ -42,5 +44,28 @@ abstract class AbstractController
     public function sanitizeString(string $param): string
     {
         return filter_var($param, FILTER_SANITIZE_STRING);
+    }
+
+    /**
+     * @return bool
+     */
+    public static function isUserConnected(): bool
+    {
+        return isset($_SESSION['user']) && null !== ($_SESSION['user'])->getId();
+    }
+
+    public function redirectIfConnected(): void
+    {
+        if (self::isUserConnected()) {
+            $this->render('home/index');
+        }
+    }
+
+    public function getConnectedUser(): ?Users
+    {
+        if (!self::isUserConnected()) {
+            return null;
+        }
+        return ($_SESSION['user']);
     }
 }

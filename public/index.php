@@ -1,6 +1,7 @@
 <?php
 
 use App\Routing\AbstractRouter;
+use App\Routing\APIRouter;
 use App\Routing\HomeRouter;
 use App\Routing\UsersRouter;
 
@@ -16,6 +17,9 @@ switch ($page) {
         break;
     case 'user':
         UsersRouter::route($method);
+        break;
+    case 'api':
+        APIRouter::route($method);
         break;
     default:
         (new ErrorController())->error404($page);

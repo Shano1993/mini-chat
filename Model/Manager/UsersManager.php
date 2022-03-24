@@ -10,6 +10,19 @@ class UsersManager
     public const TABLE = 'users';
 
     /**
+     * @param array $data
+     * @return Users
+     */
+    public static function makeUser(array $data): Users
+    {
+        return (new Users())
+            ->setId($data['id'])
+            ->setEmail($data['email'])
+            ->setPassword($data['password'])
+            ->setUsername($data['username']);
+    }
+
+    /**
      * @param string $email
      * @return bool
      */
@@ -47,5 +60,26 @@ class UsersManager
         $user->setId(DB::getPDO()->lastInsertId());
 
         return $result;
+    }
+
+    /**
+     * @param string $email
+     * @return Users|null
+     */
+    public static function getUserByMail(string $email): ?Users
+    {
+        $stmt = DB::getPDO()->prepare("SELECT * FROM " .self::TABLE . " WHERE email = :email LIMIT 1");
+        $stmt->bindParam(':email', $email);
+        return $stmt->execute() ? self::makeUser($stmt->fetch()) : null;
+    }
+
+    /**
+     * @param int $id
+     * @return Users|null
+     */
+    public static function getUserById(int $id): ?Users
+    {
+        $request = DB::getPDO()->query("SELECT * FROM " . self::TABLE . " WHERE id = $id");
+        return $request ? self::makeUser($request->fetch()) : null;
     }
 }

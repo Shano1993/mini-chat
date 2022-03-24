@@ -17,6 +17,15 @@ class UsersRouter extends AbstractRouter
             case 'register':
                 $controller->register();
                 break;
+            case 'logout':
+                $controller->logout();
+                break;
+            case 'login':
+                $controller->login();
+                break;
+            case 'chat':
+                $controller->chat();
+                break;
             default:
                 (new ErrorController())->error404($action);
         }

@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #F9F9F9;
+}
+
+header {
+    background-color: rgba(105, 143, 255, 0.33);
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+    font-size: 4rem;
+}
+
+h2 {
+    text-align: center;
+    margin: 5rem;
+    font-size: 3rem;
+    text-decoration-line: underline;
+}
+
+nav {
+    border-bottom: 0.1rem solid rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    padding-right: 2rem;
+}
+
+.link {
+    color: black;
+    text-decoration-line: none;
+    font-size: 2rem;
+    padding: 0.5rem;
+    margin: 1rem;
+}
+
+.link:hover {
+    color: royalblue;
+    transform: scale(1.1);
+}
+
+.join {
+    font-size: 2.5rem;
+    text-decoration-line: none;
+    border: 0.1rem solid black;
+    margin: 5rem;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0.5rem 0.5rem 0.5rem #000000;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+label {
+    font-size: 1.5rem;
+}
+
+input[type=text], input[type=email], input[type=password] {
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 0.2rem;
+}
+
+input[type=submit] {
+    font-size: 1.5rem;
+    padding: 0.3rem;
+    margin: 0.5rem;
+    cursor: pointer;
+}
+
+.font {
+    border: 0.1rem solid black;
+    margin: 0 auto;
+    width: 50%;
+}
+
+.messages {
+    height: 50%;
+    width: 80%;
+}
+
+.text {
+    width: 90%;
+    font-size: 1.5rem;
+}
+
+.foot, #message, .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foot {
+    border: 0.1rem solid black;
+}
+
+#message {
+    width: 90%;
+}
+
+.button {
+    width: 30%;
+}
+
