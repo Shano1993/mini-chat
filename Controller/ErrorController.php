@@ -9,4 +9,9 @@ class ErrorController
     {
         require __DIR__ . '/../View/error/error404.html.php';
     }
+
+    public function missingParameters()
+    {
+        require __DIR__ . '/../View/error/missing-parameters.html.php';
+    }
 }

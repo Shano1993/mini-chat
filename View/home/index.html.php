@@ -1,1 +1,1 @@
-<h2>Bienvenue sur le Chat hyper chaud 🥵🥵🥵</h2>
+<h1>Bienvenue sur le chat !</h1>
