@@ -14,6 +14,7 @@ require __DIR__ . '/Controller/AbstractController.php';
 require __DIR__ . '/Controller/ErrorController.php';
 require __DIR__ . '/Controller/HomeController.php';
 require __DIR__ . '/Controller/UsersController.php';
+require __DIR__ . '/Controller/MessagesController.php';
 
 require __DIR__ . '/Routing/AbstractRouter.php';
 require __DIR__ . '/Routing/HomeRouter.php';
@@ -21,4 +22,4 @@ require __DIR__ . '/Routing/UsersRouter.php';
 
 // API
 require __DIR__ . '/Routing/APIRouter.php';
-require __DIR__ . '/Model/API/MessagesController.php';
+require __DIR__ . '/Controller/API/MessagesController.php';

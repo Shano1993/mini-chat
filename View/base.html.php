@@ -24,7 +24,7 @@ echo "</pre>";
 
 ?>
     <header>
-        <h1>Chat en Folie</h1>
+        <h1>Chat</h1>
     </header>
 
         <nav>
@@ -46,5 +46,6 @@ echo "</pre>";
     </div>
 
     <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/message.js"></script>
 </body>
 </html>

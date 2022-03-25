@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\API;
+namespace App\Controller\API;
 
 use App\Controller\AbstractController;
 use App\Model\Entity\Messages;
@@ -11,10 +11,10 @@ class MessagesController extends AbstractController
 {
     public function index()
     {
-        // TODO: Implement index() method.
+        $this->render('user/chat');
     }
 
-    public function sendMessage()
+    public function newMessage()
     {
         $payload = file_get_contents('php://input');
         $payload = json_decode($payload);
@@ -26,20 +26,22 @@ class MessagesController extends AbstractController
 
         if (!self::isUserConnected()) {
             http_response_code(403);
+            exit();
         }
 
-        $messages = $this->sanitizeString($payload->message);
+        $content = $this->sanitizeString($payload->message);
+        $user = $_SESSION['user'];
 
-        $user = self::getConnectedUser();
         $message = new Messages();
-        $message->setMessage($messages);
+        $message->setMessage($content);
+        $message->setSendDate(new DateTime());
         $message->setAuthor($user);
 
         if (MessagesManager::newMessage($message)) {
             echo json_encode([
                 'id' => $message->getId(),
                 'message' => $message->getMessage(),
-                'date' => $message->setSendDate(new DateTime()),
+                'date' => $message->getSendDate(),
                 'author' => $message->getAuthor()->getUsername(),
             ]);
             http_response_code(200);

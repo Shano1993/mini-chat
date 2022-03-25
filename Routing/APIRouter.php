@@ -2,18 +2,20 @@
 
 namespace App\Routing;
 
-use App\Model\API\MessagesController;
+use App\Controller\API\MessagesController;
 
 class APIRouter extends AbstractRouter
 {
     public static function route(?string $action = null)
     {
         switch ($action) {
-            case 'send-message':
-                (new MessagesController())->sendMessage();
+            case 'new-message':
+                (new MessagesController())->newMessage();
                 break;
-            default: http_response_code(404);
+            default:
+                http_response_code(404);
         }
         exit();
     }
 }
+
