@@ -30,23 +30,33 @@ class MessagesManager
     /**
      * @return array
      */
-    public static function getAllMessages(): array
+    public static function getAll(): array
     {
-        $messages = [];
         $request = DB::getPDO()->query("SELECT * FROM " . self::TABLE);
+        $messages = [];
+
         if ($request) {
             $usersManager = new UsersManager();
-            $format = 'Y-m-d H:i:s';
-
-            foreach ($request->fetchAll() as $messageData) {
-                $messages[] = (new Messages())
-                    ->setId($messageData['id'])
-                    ->setMessage($messageData['message'])
-                    ->setSendDate(DateTime::createFromFormat($format, $messageData['date']))
-                    ->setAuthor($usersManager->getUserById($messageData['users_fk']))
-                    ;
+            foreach ($request->fetchAll() as $value) {
+                $messages[] = self::createMessage($value, $usersManager);
             }
         }
         return $messages;
+    }
+
+    /**
+     * @param array $data
+     * @param $userManager
+     * @return Messages
+     */
+    public static function createMessage(array $data, $userManager): Messages
+    {
+        $format = "Y-m-d H:i:s";
+        return (new Messages())
+            ->setId($data['id'])
+            ->setAuthor($userManager->getUserById($data['users_fk']))
+            ->setSendDate(DateTime::createFromFormat($format, $data['date']))
+            ->setMessage($data['message'])
+            ;
     }
 }
