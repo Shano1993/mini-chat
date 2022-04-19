@@ -2,7 +2,11 @@
 
 <div class="font">
     <div class="messages">
-        
+        <?php
+            if (isset($_POST['save'])) { ?>
+                <p><?= $_SESSION['user'] ?></p> <?php
+            }
+        ?>
     </div>
 
     <div class="foot">
